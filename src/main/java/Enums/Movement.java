@@ -1,4 +1,8 @@
 package Enums;
 
-public enum Movement {
+public enum Movement{
+    MOVE,
+    ATTACK,
+    ALIGN,
+    END
 }
