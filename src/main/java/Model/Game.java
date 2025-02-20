@@ -1,15 +1,30 @@
 package Model;
 
 import Enums.Status;
-
+import jakarta.persistence.*;
 import java.util.List;
 
+@Entity
 public class Game {
-   String id;
-   String map;
-   List<Players> players;
-   List<Moves> moves;
-   Status status;
+   @Id
+   private String id;
+   private String map;
+
+   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+   private List<Players> players;
+
+   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+   private List<Moves> moves;
+
+   @Enumerated(EnumType.STRING)
+   private Status status;
+
+//public class Game {
+  // String id;
+   //String map;
+   //List<Players> players;
+   //List<Moves> moves;
+   //Status status;
 
    public Game(){
    }
@@ -60,6 +75,4 @@ public class Game {
    public void setStatus(Status status) {
       this.status = status;
    }
-
-
 }

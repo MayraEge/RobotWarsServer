@@ -1,14 +1,21 @@
 package Model;
 
-import Enums.Alignment;
-import Enums.Movement;
+import Enums.*;
+import jakarta.persistence.*;
 
+@Entity
 public class Moves {
-    String id;
-    String playerId;
-    Movement movement;
-    Alignment alignment;
-    int MapIndex;
+    @Id
+    private String id;
+    private String playerId;
+
+    @Enumerated(EnumType.STRING)
+    private Movement movement;
+
+    @Enumerated(EnumType.STRING)
+    private Alignment alignment;
+
+    private int mapIndex;
 
     public Moves() {
     }
@@ -18,7 +25,7 @@ public class Moves {
         this.playerId = playerId;
         this.movement = movement;
         this.alignment = alignment;
-        MapIndex = mapIndex;
+        this.mapIndex = mapIndex;
     }
 
     public String getId() {
@@ -54,10 +61,10 @@ public class Moves {
     }
 
     public int getMapIndex() {
-        return MapIndex;
+        return mapIndex;
     }
 
     public void setMapIndex(int mapIndex) {
-        MapIndex = mapIndex;
+        this.mapIndex = mapIndex;
     }
 }

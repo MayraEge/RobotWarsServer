@@ -1,9 +1,13 @@
 package Model;
 
-public class Players {
-    String playerId;
-    String robotId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class Players {
+    @Id
+    private String playerId;
+    private String robotId;
     public Players() {
     }
 

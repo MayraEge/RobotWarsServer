@@ -1,6 +1,11 @@
 package Model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Robot {
+    @Id
     String id;
     String name;
     int health;
