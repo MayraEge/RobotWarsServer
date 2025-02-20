@@ -16,20 +16,20 @@ public class RobotService {
     @Autowired
     private RobotRepository robotRepository;
 
-    @GetMapping
+    @GetMapping("/robots")
     public List<Robot> getAllRobots(){
         return robotRepository.findAll();
     }
 
     //bestimmten Roboter finden
-    @GetMapping("/{name}")
+    @GetMapping("/robots/{name}")
     public ResponseEntity<Robot> getRobot(@PathVariable("name") String name){
         Optional<Robot> robot = robotRepository.findByName(name);
         return robot.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
     //Roboter erstellen
-    @PostMapping
+    @PostMapping("/robots")
     public ResponseEntity<Robot> createRobot(@RequestBody Robot newRobot){
         Optional<Robot> existingRobot = robotRepository.findByName(newRobot.getName());
         if (existingRobot.isPresent()){
@@ -37,10 +37,5 @@ public class RobotService {
         }
         robotRepository.save(newRobot);
         return ResponseEntity.status(HttpStatus.CREATED).body(newRobot);
-    }
-
-    @PostMapping
-    public Robot addRobot(@RequestBody Robot robot) {
-        return robotRepository.save(robot);
     }
 }

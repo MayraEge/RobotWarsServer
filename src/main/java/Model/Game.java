@@ -2,7 +2,11 @@ package Model;
 
 import Enums.Status;
 import jakarta.persistence.*;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 import java.util.List;
+
+@EnableJpaRepositories
 
 @Entity
 public class Game {
