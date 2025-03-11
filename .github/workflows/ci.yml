@@ -30,4 +30,8 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
+      - name: Run static code analysis
+        run: mvn checkstyle:check
 
+      - name: Run unit tests
+        run: mvn test
